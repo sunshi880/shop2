@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechStyle - Premium Smartwatches & Wallets</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#E8F0FE',
+secondary: '#F5F5F5'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body { font-family: 'Inter', sans-serif; }
+.skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: loading 1.5s infinite; }
+@keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+.modal-overlay { backdrop-filter: blur(4px); }
+.cart-badge { animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+</style>
+</head>
+<body class="bg-white text-gray-800">
+<!-- Header -->
+<header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 transition-all duration-300">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center">
+<h1 class="text-2xl font-['Pacifico'] text-gray-800">TechStyle</h1>
+</div>
+<nav class="hidden md:flex space-x-8">
+<a href="#home" class="text-gray-700 hover:text-blue-600 transition-colors duration-300">Home</a>
+<a href="products.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-300">Products</a>
+<a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors duration-300">Contact</a>
+</nav>
+<div class="flex items-center space-x-4">
+<div class="relative">
+<button id="cart-btn" class="relative p-2 text-gray-700 hover:text-blue-600 transition-colors duration-300">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-shopping-cart-line text-xl"></i>
+</div>
+<span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center cart-badge">0</span>
+</button>
+<div id="cart-dropdown" class="hidden absolute right-0 top-full mt-2 w-80 bg-white rounded-lg shadow-xl z-50">
+<div class="p-4">
+<div id="cart-empty" class="text-center py-8">
+<div class="w-16 h-16 mx-auto mb-4 text-gray-300">
+<i class="ri-shopping-cart-line text-5xl"></i>
+</div>
+<p class="text-gray-500 mb-4">Your cart is empty</p>
+<button id="continue-shopping" class="text-blue-600 hover:text-blue-700 font-medium">Continue Shopping</button>
+</div>
+<div id="cart-items" class="hidden">
+<div class="max-h-64 overflow-y-auto">
+<div id="cart-items-list" class="space-y-4"></div>
+</div>
+<div class="border-t mt-4 pt-4">
+<div class="flex justify-between mb-4">
+<span class="font-medium">Total:</span>
+<span id="cart-total" class="font-bold text-blue-600">PKR 0</span>
+</div>
+<button id="checkout-btn" class="w-full bg-blue-600 text-white py-2 !rounded-button font-medium hover:bg-blue-700 transition-colors duration-300 whitespace-nowrap">
+Checkout
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<button id="mobile-menu-btn" class="md:hidden p-2 text-gray-700">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-menu-line text-xl"></i>
+</div>
+</button>
+</div>
+</div>
+</div>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="md:hidden bg-white border-t hidden">
+<div class="px-4 py-2 space-y-2">
+<a href="#home" class="block py-2 text-gray-700 hover:text-blue-600">Home</a>
+<a href="#products" class="block py-2 text-gray-700 hover:text-blue-600">Products</a>
+<a href="#contact" class="block py-2 text-gray-700 hover:text-blue-600">Contact</a>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img src="https://readdy.ai/api/search-image?query=modern%20minimalist%20workspace%20with%20premium%20smartwatch%20and%20leather%20wallet%20on%20clean%20white%20desk%2C%20soft%20natural%20lighting%2C%20professional%20product%20photography%2C%20high-end%20lifestyle%20aesthetic%2C%20subtle%20shadows%2C%20contemporary%20design&width=1920&height=1080&seq=hero1&orientation=landscape"
+alt="Hero Background" class="w-full h-full object-cover object-center">
+<div class="absolute inset-0 bg-gradient-to-r from-white/90 to-transparent"></div>
+</div>
+<div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="max-w-2xl">
+<h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+Premium Tech <br>
+<span class="text-blue-600">Accessories</span>
+</h1>
+<p class="text-xl text-gray-600 mb-8 leading-relaxed">
+Discover our curated collection of smartwatches and premium wallets designed for the modern lifestyle in Pakistan.
+</p>
+<button id="hero-cta" class="bg-blue-600 text-white px-8 py-4 !rounded-button text-lg font-semibold hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg whitespace-nowrap">
+Shop Now
+</button>
+</div>
+</div>
+</section>
+<!-- Featured Products -->
+<section id="products" class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Featured Products</h2>
+<div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+<p class="text-xl text-gray-600 max-w-2xl mx-auto">
+Explore our handpicked selection of premium smartwatches and elegant wallets
+</p>
+</div>
+<div id="products-grid" class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<!-- Product cards will be generated here -->
+</div>
+</div>
+</section>
+<!-- Product Detail Modal -->
+<div id="product-modal" class="fixed inset-0 bg-black/50 modal-overlay z-50 hidden flex items-center justify-center p-4">
+<div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+<div class="sticky top-0 bg-white border-b p-4 flex justify-between items-center">
+<h3 class="text-xl font-semibold">Product Details</h3>
+<button id="close-modal" class="p-2 hover:bg-gray-100 rounded-full transition-colors duration-300">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-close-line text-xl"></i>
+</div>
+</button>
+</div>
+<div class="p-6">
+<div class="grid md:grid-cols-2 gap-8">
+<div>
+<div id="modal-image" class="aspect-square bg-gray-100 rounded-lg mb-4 overflow-hidden">
+<!-- Product image will be loaded here -->
+</div>
+<div class="flex space-x-2">
+<div class="w-16 h-16 bg-gray-200 rounded cursor-pointer hover:ring-2 hover:ring-blue-500 transition-all duration-300"></div>
+<div class="w-16 h-16 bg-gray-200 rounded cursor-pointer hover:ring-2 hover:ring-blue-500 transition-all duration-300"></div>
+<div class="w-16 h-16 bg-gray-200 rounded cursor-pointer hover:ring-2 hover:ring-blue-500 transition-all duration-300"></div>
+</div>
+</div>
+<div>
+<h2 id="modal-title" class="text-3xl font-bold text-gray-900 mb-4"></h2>
+<div class="flex items-center mb-4">
+<div class="flex text-yellow-400 mr-2">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-line"></i>
+</div>
+<span class="text-gray-600">(4.2 out of 5)</span>
+</div>
+<div class="mb-6">
+<span id="modal-price" class="text-3xl font-bold text-blue-600"></span>
+<span class="text-lg text-gray-500 line-through ml-2">PKR 15,999</span>
+</div>
+<div class="mb-6">
+<h4 class="font-semibold mb-3">Available Colors:</h4>
+<div class="flex space-x-3">
+<button class="w-8 h-8 bg-black rounded-full ring-2 ring-offset-2 ring-blue-500"></button>
+<button class="w-8 h-8 bg-blue-600 rounded-full hover:ring-2 hover:ring-offset-2 hover:ring-blue-500 transition-all duration-300"></button>
+<button class="w-8 h-8 bg-gray-400 rounded-full hover:ring-2 hover:ring-offset-2 hover:ring-blue-500 transition-all duration-300"></button>
+</div>
+</div>
+<div class="mb-8">
+<h4 class="font-semibold mb-3">Description:</h4>
+<p id="modal-description" class="text-gray-600 leading-relaxed"></p>
+</div>
+<div class="flex space-x-4">
+<button id="add-to-cart" class="flex-1 bg-blue-600 text-white py-3 px-6 !rounded-button font-semibold hover:bg-blue-700 transition-all duration-300 whitespace-nowrap">
+Add to Cart
+</button>
+<button class="px-6 py-3 border border-gray-300 !rounded-button hover:bg-gray-50 transition-colors duration-300 whitespace-nowrap">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-heart-line"></i>
+</div>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Loading Overlay -->
+<div id="loading-overlay" class="fixed inset-0 bg-white/80 z-40 hidden flex items-center justify-center">
+<div class="text-center">
+<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+<p class="text-gray-600">Loading product details...</p>
+</div>
+</div>
+<!-- Sticky Cart -->
+<div id="sticky-cart" class="fixed bottom-6 right-6 z-40">
+<button class="bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-110">
+<div class="w-6 h-6 flex items-center justify-center relative">
+<i class="ri-shopping-cart-fill text-xl"></i>
+<span id="sticky-cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+</div>
+</button>
+</div>
+<!-- Footer -->
+<footer class="bg-secondary py-16">
+<!-- Why Choose Us Section -->
+<section class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Why Choose Us</h2>
+<div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+<p class="text-xl text-gray-600 max-w-2xl mx-auto">
+Experience premium service and quality with every purchase
+</p>
+</div>
+<div class="grid md:grid-cols-4 gap-8">
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center">
+<div class="w-16 h-16 mx-auto mb-6 text-blue-600 flex items-center justify-center">
+<i class="ri-exchange-line text-4xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Free Returns</h3>
+<p class="text-gray-600">Easy returns within 7 days of purchase. No questions asked.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center">
+<div class="w-16 h-16 mx-auto mb-6 text-blue-600 flex items-center justify-center">
+<i class="ri-secure-payment-line text-4xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Secure Payment</h3>
+<p class="text-gray-600">Multiple secure payment options including cash on delivery.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center">
+<div class="w-16 h-16 mx-auto mb-6 text-blue-600 flex items-center justify-center">
+<i class="ri-customer-service-2-line text-4xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Local Support</h3>
+<p class="text-gray-600">Dedicated customer support team available 7 days a week.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center">
+<div class="w-16 h-16 mx-auto mb-6 text-blue-600 flex items-center justify-center">
+<i class="ri-shield-check-line text-4xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Quality Assured</h3>
+<p class="text-gray-600">All products are authentic with manufacturer warranty.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
+<div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+<p class="text-xl text-gray-600 max-w-2xl mx-auto">
+Have questions? We're here to help. Send us a message and we'll respond as soon as possible.
+</p>
+</div>
+<div class="grid md:grid-cols-2 gap-12 items-start">
+<div>
+<form id="contact-form" class="space-y-6">
+<div>
+<label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+<input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Your name">
+</div>
+<div>
+<label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+<input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="your@email.com">
+</div>
+<div>
+<label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+<textarea id="message" name="message" rows="4" required maxlength="500" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Your message or inquiry"></textarea>
+<div class="text-sm text-gray-500 mt-1">
+<span id="char-count">0</span>/500 characters
+</div>
+</div>
+<button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 !rounded-button font-semibold hover:bg-blue-700 transition-all duration-300 relative whitespace-nowrap">
+<span id="submit-text">Send Message</span>
+<span id="submit-loader" class="hidden absolute inset-0 flex items-center justify-center">
+<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+</svg>
+</span>
+</button>
+</form>
+</div>
+<div class="h-[400px] rounded-lg overflow-hidden shadow-lg">
+<img src="https://public.readdy.ai/gen_page/map_placeholder_1280x720.png" alt="Location Map" class="w-full h-full object-cover">
+</div>
+</div>
+</div>
+<br>
+<br>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-3 gap-8">
+<div>
+<h3 class="text-2xl font-['Pacifico'] text-gray-800 mb-4">TechStyle</h3>
+<p class="text-gray-600 mb-4">
+Your trusted partner for premium tech accessories in Pakistan. Quality products, exceptional service.
+</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-facebook-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-instagram-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-twitter-fill"></i>
+</div>
+</a>
+</div>
+</div>
+<div>
+<h4 class="font-semibold text-gray-900 mb-4">Quick Links</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">About Us</a></li>
+<li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">Privacy Policy</a></li>
+<li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">Terms of Service</a></li>
+<li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">Shipping Info</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold text-gray-900 mb-4">Contact Us</h4>
+<div class="space-y-3">
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-whatsapp-fill text-green-600"></i>
+</div>
+<span class="text-gray-600">+92 300 1234567</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-mail-fill text-blue-600"></i>
+</div>
+<span class="text-gray-600">info@techstyle.pk</span>
+</div>
+<div class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center mr-3 mt-1">
+<i class="ri-map-pin-fill text-red-600"></i>
+</div>
+<span class="text-gray-600">Lahore, Punjab, Pakistan</span>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-300 mt-12 pt-8 text-center">
+<p class="text-gray-600">&copy; 2025 TechStyle. All rights reserved.</p>
+</div>
+</div>
+</section>
+
+</footer>
+<script id="mobile-menu-script">
+document.addEventListener('DOMContentLoaded', function() {
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+mobileMenuBtn.addEventListener('click', function() {
+mobileMenu.classList.toggle('hidden');
+});
+});
+</script>
+<script id="products-script">
+document.addEventListener('DOMContentLoaded', function() {
+const products = [
+{
+id: 1,
+name: 'Apple Watch Series 9',
+price: 'PKR 89,999',
+image: 'https://readdy.ai/api/search-image?query=premium%20apple%20smartwatch%20with%20black%20sport%20band%20on%20clean%20white%20background%2C%20professional%20product%20photography%2C%20high%20resolution%2C%20modern%20minimalist%20style%2C%20soft%20shadows&width=400&height=400&seq=watch1&orientation=squarish',
+description: 'The most advanced Apple Watch yet, featuring the new S9 chip, Double Tap gesture, and enhanced health monitoring capabilities.'
+},
+{
+id: 2,
+name: 'Samsung Galaxy Watch 6',
+price: 'PKR 65,999',
+image: 'https://readdy.ai/api/search-image?query=samsung%20galaxy%20smartwatch%20with%20silver%20metal%20band%20on%20white%20background%2C%20professional%20product%20photography%2C%20clean%20minimalist%20style%2C%20premium%20quality&width=400&height=400&seq=watch2&orientation=squarish',
+description: 'Experience seamless connectivity with advanced health tracking, sleep monitoring, and personalized insights for your wellness journey.'
+},
+{
+id: 3,
+name: 'Premium Leather Wallet',
+price: 'PKR 12,999',
+image: 'https://readdy.ai/api/search-image?query=luxury%20brown%20leather%20wallet%20with%20multiple%20card%20slots%20on%20clean%20white%20background%2C%20professional%20product%20photography%2C%20premium%20craftsmanship%2C%20elegant%20design&width=400&height=400&seq=wallet1&orientation=squarish',
+description: 'Handcrafted from genuine Italian leather, featuring RFID protection and multiple compartments for cards and cash.'
+},
+{
+id: 4,
+name: 'Smart Fitness Tracker',
+price: 'PKR 25,999',
+image: 'https://readdy.ai/api/search-image?query=modern%20fitness%20tracker%20smartwatch%20with%20colorful%20sport%20band%20on%20white%20background%2C%20professional%20product%20photography%2C%20sleek%20design%2C%20health%20monitoring%20device&width=400&height=400&seq=tracker1&orientation=squarish',
+description: 'Track your fitness goals with 24/7 heart rate monitoring, GPS tracking, and 50+ workout modes in a lightweight design.'
+},
+{
+id: 5,
+name: 'Minimalist Card Holder',
+price: 'PKR 8,999',
+image: 'https://readdy.ai/api/search-image?query=sleek%20black%20minimalist%20card%20holder%20wallet%20on%20clean%20white%20background%2C%20modern%20design%2C%20premium%20materials%2C%20professional%20product%20photography&width=400&height=400&seq=cardholder1&orientation=squarish',
+description: 'Ultra-slim design with aluminum construction, holds up to 12 cards with quick-access mechanism and RFID blocking technology.'
+},
+{
+id: 6,
+name: 'Luxury Business Wallet',
+price: 'PKR 18,999',
+image: 'https://readdy.ai/api/search-image?query=elegant%20black%20leather%20business%20wallet%20with%20gold%20accents%20on%20white%20background%2C%20luxury%20craftsmanship%2C%20professional%20product%20photography%2C%20premium%20quality&width=400&height=400&seq=wallet2&orientation=squarish',
+description: 'Executive-grade wallet with premium leather construction, multiple compartments, and sophisticated design for professionals.'
+},
+{
+id: 7,
+name: 'Hybrid Smartwatch',
+price: 'PKR 45,999',
+image: 'https://readdy.ai/api/search-image?query=hybrid%20analog%20smartwatch%20with%20leather%20strap%20on%20clean%20white%20background%2C%20classic%20design%20meets%20modern%20technology%2C%20professional%20product%20photography&width=400&height=400&seq=hybrid1&orientation=squarish',
+description: 'Classic analog design with smart features including activity tracking, notifications, and 6-month battery life.'
+},
+{
+id: 8,
+name: 'Travel Wallet Organizer',
+price: 'PKR 15,999',
+image: 'https://readdy.ai/api/search-image?query=brown%20leather%20travel%20wallet%20organizer%20with%20passport%20compartment%20on%20white%20background%2C%20travel%20accessories%2C%20professional%20product%20photography%2C%20premium%20design&width=400&height=400&seq=travel1&orientation=squarish',
+description: 'Complete travel companion with passport holder, boarding pass slots, currency compartments, and RFID protection.'
+}
+];
+const productsGrid = document.getElementById('products-grid');
+products.forEach(product => {
+const productCard = document.createElement('div');
+productCard.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:scale-102 cursor-pointer';
+productCard.innerHTML = `
+<div class="aspect-square overflow-hidden">
+<img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300">
+</div>
+<div class="p-4">
+<h3 class="font-semibold text-gray-900 mb-2 text-sm md:text-base">${product.name}</h3>
+<p class="text-blue-600 font-bold text-lg mb-3">${product.price}</p>
+<button class="w-full bg-primary text-blue-700 py-2 px-4 !rounded-button text-sm font-medium hover:bg-blue-100 transition-colors duration-300 whitespace-nowrap">
+View Details
+</button>
+</div>
+`;
+productCard.addEventListener('click', () => openProductModal(product));
+productsGrid.appendChild(productCard);
+});
+});
+</script>
+<script id="modal-script">
+document.addEventListener('DOMContentLoaded', function() {
+const modal = document.getElementById('product-modal');
+const closeModal = document.getElementById('close-modal');
+const loadingOverlay = document.getElementById('loading-overlay');
+const addToCartBtn = document.getElementById('add-to-cart');
+const cartDropdown = document.getElementById('cart-dropdown');
+const cartBtn = document.getElementById('cart-btn');
+const cartEmptyEl = document.getElementById('cart-empty');
+const cartItemsEl = document.getElementById('cart-items');
+const cartItemsList = document.getElementById('cart-items-list');
+const cartTotalEl = document.getElementById('cart-total');
+const continueShopping = document.getElementById('continue-shopping');
+let cartCount = 0;
+let cartItems = [];
+let currentProduct = null;
+window.openProductModal = function(product) {
+loadingOverlay.classList.remove('hidden');
+setTimeout(() => {
+document.getElementById('modal-title').textContent = product.name;
+document.getElementById('modal-price').textContent = product.price;
+document.getElementById('modal-description').textContent = product.description;
+document.getElementById('modal-image').innerHTML = `
+<img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover object-top">
+`;
+loadingOverlay.classList.add('hidden');
+modal.classList.remove('hidden');
+document.body.style.overflow = 'hidden';
+}, 800);
+};
+closeModal.addEventListener('click', function() {
+modal.classList.add('hidden');
+document.body.style.overflow = 'auto';
+});
+modal.addEventListener('click', function(e) {
+if (e.target === modal) {
+modal.classList.add('hidden');
+document.body.style.overflow = 'auto';
+}
+});
+cartBtn.addEventListener('click', function(e) {
+e.stopPropagation();
+cartDropdown.classList.toggle('hidden');
+});
+document.addEventListener('click', function(e) {
+if (!cartDropdown.contains(e.target) && !cartBtn.contains(e.target)) {
+cartDropdown.classList.add('hidden');
+}
+});
+continueShopping.addEventListener('click', function() {
+cartDropdown.classList.add('hidden');
+document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+});
+function updateCartUI() {
+document.getElementById('cart-count').textContent = cartCount;
+document.getElementById('sticky-cart-count').textContent = cartCount;
+if (cartItems.length === 0) {
+cartEmptyEl.classList.remove('hidden');
+cartItemsEl.classList.add('hidden');
+} else {
+cartEmptyEl.classList.add('hidden');
+cartItemsEl.classList.remove('hidden');
+cartItemsList.innerHTML = '';
+let total = 0;
+cartItems.forEach((item, index) => {
+const priceNum = parseInt(item.price.replace(/[^0-9]/g, ''));
+const itemTotal = priceNum * item.quantity;
+total += itemTotal;
+const itemEl = document.createElement('div');
+itemEl.className = 'flex items-center justify-between';
+itemEl.innerHTML = `
+<div class="flex items-center space-x-3">
+<img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover object-top rounded">
+<div>
+<h4 class="text-sm font-medium text-gray-900">${item.name}</h4>
+<div class="flex items-center space-x-2 mt-1">
+<button class="quantity-btn text-gray-500 hover:text-blue-600" data-index="${index}" data-action="decrease">
+<i class="ri-subtract-line"></i>
+</button>
+<span class="text-sm">${item.quantity}</span>
+<button class="quantity-btn text-gray-500 hover:text-blue-600" data-index="${index}" data-action="increase">
+<i class="ri-add-line"></i>
+</button>
+</div>
+</div>
+</div>
+<div class="text-right">
+<div class="text-sm font-medium text-gray-900">PKR ${itemTotal.toLocaleString()}</div>
+<button class="remove-item text-sm text-red-500 hover:text-red-600" data-index="${index}">Remove</button>
+</div>
+`;
+cartItemsList.appendChild(itemEl);
+});
+cartTotalEl.textContent = `PKR ${total.toLocaleString()}`;
+}
+}
+cartItemsList.addEventListener('click', function(e) {
+const quantityBtn = e.target.closest('.quantity-btn');
+const removeBtn = e.target.closest('.remove-item');
+if (quantityBtn) {
+const index = parseInt(quantityBtn.dataset.index);
+const action = quantityBtn.dataset.action;
+if (action === 'increase') {
+cartItems[index].quantity++;
+cartCount++;
+} else if (action === 'decrease' && cartItems[index].quantity > 1) {
+cartItems[index].quantity--;
+cartCount--;
+}
+updateCartUI();
+}
+if (removeBtn) {
+const index = parseInt(removeBtn.dataset.index);
+cartCount -= cartItems[index].quantity;
+cartItems.splice(index, 1);
+updateCartUI();
+}
+});
+addToCartBtn.addEventListener('click', function() {
+if (currentProduct) {
+const existingItem = cartItems.find(item => item.id === currentProduct.id);
+if (existingItem) {
+existingItem.quantity++;
+cartCount++;
+} else {
+cartItems.push({
+...currentProduct,
+quantity: 1
+});
+cartCount++;
+}
+updateCartUI();
+}
+const button = this;
+const originalText = button.textContent;
+button.textContent = 'Added!';
+button.classList.add('bg-green-600');
+button.classList.remove('bg-blue-600');
+setTimeout(() => {
+button.textContent = originalText;
+button.classList.remove('bg-green-600');
+button.classList.add('bg-blue-600');
+}, 1500);
+});
+window.openProductModal = function(product) {
+currentProduct = product;
+loadingOverlay.classList.remove('hidden');
+setTimeout(() => {
+document.getElementById('modal-title').textContent = product.name;
+document.getElementById('modal-price').textContent = product.price;
+document.getElementById('modal-description').textContent = product.description;
+document.getElementById('modal-image').innerHTML = `
+<img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover object-top">
+`;
+loadingOverlay.classList.add('hidden');
+modal.classList.remove('hidden');
+document.body.style.overflow = 'hidden';
+}, 800);
+};
+});
+</script>
+<script id="contact-form-script">
+document.addEventListener('DOMContentLoaded', function() {
+const form = document.getElementById('contact-form');
+const messageInput = document.getElementById('message');
+const charCount = document.getElementById('char-count');
+const submitText = document.getElementById('submit-text');
+const submitLoader = document.getElementById('submit-loader');
+messageInput.addEventListener('input', function() {
+const count = this.value.length;
+charCount.textContent = count;
+});
+form.addEventListener('submit', function(e) {
+e.preventDefault();
+submitText.classList.add('invisible');
+submitLoader.classList.remove('hidden');
+setTimeout(() => {
+const successMessage = document.createElement('div');
+successMessage.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 z-50';
+successMessage.textContent = 'Message sent successfully!';
+document.body.appendChild(successMessage);
+submitText.classList.remove('invisible');
+submitLoader.classList.add('hidden');
+form.reset();
+charCount.textContent = '0';
+setTimeout(() => {
+successMessage.style.opacity = '0';
+setTimeout(() => successMessage.remove(), 300);
+}, 3000);
+}, 1500);
+});
+});
+</script>
+<script id="scroll-effects-script">
+document.addEventListener('DOMContentLoaded', function() {
+const header = document.querySelector('header');
+const heroCta = document.getElementById('hero-cta');
+window.addEventListener('scroll', function() {
+if (window.scrollY > 100) {
+header.classList.add('shadow-lg');
+} else {
+header.classList.remove('shadow-lg');
+}
+});
+heroCta.addEventListener('click', function() {
+document.getElementById('products').scrollIntoView({
+behavior: 'smooth'
+});
+});
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+target.scrollIntoView({ behavior: 'smooth' });
+}
+});
+});
+});
+</script>
+</body>
+</html>
